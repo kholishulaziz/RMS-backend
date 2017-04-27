@@ -10,9 +10,8 @@ import java.util.List;
 /**
  * Created by Kholishul_A on 20/04/2017.
  */
-
 @Repository
 @RepositoryRestResource(exported = false)
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long>{
+public interface EmployeeRepository extends PagingAndSortingRepository<Employee, String>{
     List<Employee> findByFirstNameContainsOrLastNameContains(String firstName, String lastName);
 }

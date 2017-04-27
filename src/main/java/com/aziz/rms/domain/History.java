@@ -1,5 +1,7 @@
 package com.aziz.rms.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -9,34 +11,31 @@ import java.sql.Date;
 @Entity
 @Table(name="HISTORY")
 public class History {
-    @Id
-    @GeneratedValue
-    @Column(name="HISTORY_ID")
-    private long Id;
 
-    @Column(name="START_DATE")
+    @Id
+    @Column(name="HISTORY_ID")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String Id;
+
     private Date startDate;
 
-    @Column(name="END_DATE")
     private Date endDate;
 
-    @Column(name="NAME")
-    private String name;
+    private String projectName;
 
-    @Column(name="ROLE")
-    private String role;
+    private String ProjectRole;
 
-    @Column(name="DESCRIPTION")
-    private String description;
+    private String jobDescription;
 
     @Column(name="EMPLOYEE_ID")
-    private Long employeeId;
+    private String employeeId;
 
-    public long getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         Id = id;
     }
 
@@ -56,35 +55,35 @@ public class History {
         this.endDate = endDate;
     }
 
-    public String getName() {
-        return name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public String getRole() {
-        return role;
+    public String getProjectRole() {
+        return ProjectRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setProjectRole(String projectRole) {
+        ProjectRole = projectRole;
     }
 
-    public String getDescription() {
-        return description;
+    public String getJobDescription() {
+        return jobDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
     }
 
-    public Long getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 }

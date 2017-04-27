@@ -1,5 +1,7 @@
 package com.aziz.rms.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -9,68 +11,53 @@ import java.util.List;
  */
 
 @Entity
-@Table(name="EMPLOYEE")
 public class Employee {
 
     @Id
-    @GeneratedValue
     @Column(name="EMPLOYEE_ID")
-    private long Id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String Id;
 
-    @Column(name="FIRST_NAME")
     private String firstName;
 
-    @Column(name="LAST_NAME")
     private String lastName;
 
-    @Column(name="GENDER")
     private String gender;
 
-    @Column(name="DOB")
     private Date dob;
 
-    @Column(name="NATIONALITY")
     private String nationality;
 
-    @Column(name="MARITAL_STATUS")
     private String maritalStatus;
 
-    @Column(name="PHONE")
     private String phone;
 
-    @Column(name="SUB_DIVISION")
     private String subDivision;
 
-    @Column(name="STATUS")
     private String status;
 
-    @Column(name="HIRE_DATE")
     private Date hireDate;
 
-    @Column(name="GRADE")
     private String grade;
 
-    @Column(name="DIVISION")
     private String division;
 
-    @Column(name="EMAIL")
     private String email;
 
-    @Column(name="OFFICE")
     private String office;
 
-    @Column(name="ACTIVE")
     private boolean active;
 
     @OneToMany
     @JoinColumn(insertable = false, updatable = false, name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")
     private List<History> historyList;
 
-    public long getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         Id = id;
     }
 

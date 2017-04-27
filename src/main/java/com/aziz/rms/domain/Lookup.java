@@ -1,5 +1,7 @@
 package com.aziz.rms.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -10,24 +12,22 @@ import javax.persistence.*;
 public class Lookup {
 
     @Id
-    @GeneratedValue
     @Column(name="LOOKUP_ID")
-    private long Id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String Id;
 
-    @Column(name = "DATA_TYPE")
     private String dataType;
 
-    @Column(name = "DATA_CODE")
     private String dataCode;
 
-    @Column(name = "DATA_DESC")
     private String dataDesc;
 
-    public long getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         Id = id;
     }
 

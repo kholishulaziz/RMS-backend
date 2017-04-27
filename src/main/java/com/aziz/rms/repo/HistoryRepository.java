@@ -1,7 +1,7 @@
 package com.aziz.rms.repo;
 
 import com.aziz.rms.domain.History;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,6 @@ import java.util.List;
  */
 @Repository
 @RepositoryRestResource(exported = false)
-public interface HistoryRepository extends CrudRepository<History, Long> {
-    List<History> findByEmployeeId(Long employeeId);
+public interface HistoryRepository extends PagingAndSortingRepository<History, String> {
+    List<History> findByEmployeeId(String employeeId);
 }

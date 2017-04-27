@@ -21,12 +21,12 @@ public class LookupController {
     @Autowired
     private LookupRepository lookupRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
     public Iterable<Lookup> findLookupAll(){
         return lookupRepository.findAll();
     }
 
-    @RequestMapping(path = "/find/{dataType}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/{dataType}", method = RequestMethod.GET)
     public List<Lookup> findLookupByDataType(@PathVariable String dataType){
         return lookupRepository.findByDataType(dataType);
     }
