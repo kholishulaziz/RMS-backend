@@ -16,4 +16,5 @@ import java.util.List;
 public interface LookupRepository extends PagingAndSortingRepository<Lookup, String> {
     List<Lookup> findByDataTypeAndDataCode(@Param("dataType")String dataType, @Param("dataCode")String dataCode);
     List<Lookup> findByDataType(@Param("dataType")String dataType);
+    List<Lookup> findByDataCode(@Param("dataCode")String dataType);
 }

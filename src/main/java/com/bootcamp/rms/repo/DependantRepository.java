@@ -2,6 +2,7 @@ package com.bootcamp.rms.repo;
 
 import com.bootcamp.rms.domain.Dependant;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,5 @@ import java.util.List;
 @Repository
 @RepositoryRestResource(exported = false)
 public interface DependantRepository extends PagingAndSortingRepository<Dependant, String> {
-    List<Dependant> findByEmployeeId(String employeeId);
+    List<Dependant> findByEmployeeId(@Param("employeeId")String employeeId);
 }

@@ -40,7 +40,7 @@ public class LocationController {
         return location;
     }
 
-    @RequestMapping(path = "/search/employeeId/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/employeeId/{employeeId}", method = RequestMethod.GET)
     public List<Location> findLocationByEmployeeId(@PathVariable String employeeId){
         return locationRepository.findByEmployeeId(employeeId);
     }

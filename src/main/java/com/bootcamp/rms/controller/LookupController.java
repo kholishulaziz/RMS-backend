@@ -26,8 +26,17 @@ public class LookupController {
         return lookupRepository.findAll();
     }
 
-    @RequestMapping(path = "/search/{dataType}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/dataType/{dataType}", method = RequestMethod.GET)
     public List<Lookup> findLookupByDataType(@PathVariable String dataType){
         return lookupRepository.findByDataType(dataType);
+    }
+
+    @RequestMapping(path = "/search/dataCode/{dataCode}", method = RequestMethod.GET)
+    public List<Lookup> findLookupByDataCode(@PathVariable String dataCode){
+        return lookupRepository.findByDataCode(dataCode);
+    }
+    @RequestMapping(path = "/search/dataType/{dataType}/dataCode/{dataCode}", method = RequestMethod.GET)
+    public List<Lookup> findLookupByDataTypeAndDataCode(@PathVariable String dataType, @PathVariable String dataCode){
+        return lookupRepository.findByDataTypeAndDataCode(dataType, dataCode);
     }
 }

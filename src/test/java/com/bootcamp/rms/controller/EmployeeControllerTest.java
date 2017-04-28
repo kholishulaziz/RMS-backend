@@ -1,9 +1,7 @@
 package com.bootcamp.rms.controller;
 
-import com.bootcamp.rms.common.util;
 import com.bootcamp.rms.domain.Employee;
 import com.bootcamp.rms.domain.History;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -18,6 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 
+import static com.bootcamp.rms.common.util.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -44,13 +43,13 @@ public class EmployeeControllerTest {
         newEmployee.setFirstName("Dummy");
         newEmployee.setLastName("Data");
         newEmployee.setGender("M");
-        newEmployee.setDob(util.parseStrToDate("2001-01-01"));
+        newEmployee.setDob(parseStrToDate("2001-01-01"));
         newEmployee.setNationality("IND");
         newEmployee.setMaritalStatus("M");
         newEmployee.setPhone("081234567890");
         newEmployee.setSubDivision("Java Bootcamp");
         newEmployee.setStatus("P");
-        newEmployee.setHireDate(util.parseStrToDate("2001-01-01"));
+        newEmployee.setHireDate(parseStrToDate("2001-01-01"));
         newEmployee.setGrade("PG");
         newEmployee.setDivision("JWT");
         newEmployee.setEmail("Dummy@Data.com");
@@ -58,20 +57,21 @@ public class EmployeeControllerTest {
         newEmployee.setActive(true);
         newEmployee.setHistoryList(new ArrayList<History>());
 
-        MvcResult result = this.mockMvc.perform(post("/api/employee").content(asJsonString(newEmployee)).contentType("application/json;charset=UTF-8"))
+        MvcResult result = this.mockMvc.perform(post("/api/employee").content(jsonToString(newEmployee)).contentType("application/json;charset=UTF-8"))
             .andExpect(status().isCreated())
             .andReturn();
 
         String s = result.getResponse().getContentAsString();
-        newEmployee.setId(s.substring(s.indexOf("id") + 5 , s.length()-2));
+        String generatedId = s.substring(s.indexOf("id")+5, s.indexOf("id")+5+36);
+        newEmployee.setId(generatedId);
     }
 
     @Test
     public void editEmployee() throws Exception {
         newEmployee.setEmail("DummyEdited@Data.com");
-        this.mockMvc.perform(put("/api/employee/{id}", newEmployee.getId()).content(asJsonString(newEmployee)).contentType("application/json;charset=UTF-8"))
+        this.mockMvc.perform(put("/api/employee/{id}", newEmployee.getId()).content(jsonToString(newEmployee)).contentType("application/json;charset=UTF-8"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString(asJsonString(newEmployee))))
+            .andExpect(content().string(containsString(jsonToString(newEmployee))))
             .andReturn();
     }
 
@@ -79,7 +79,7 @@ public class EmployeeControllerTest {
     public void findEmployeeAll() throws Exception {
         this.mockMvc.perform(get("/api/employee/all"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString(asJsonString(newEmployee))))
+            .andExpect(content().string(containsString(jsonToString(newEmployee))))
             .andReturn();
     }
 
@@ -87,7 +87,7 @@ public class EmployeeControllerTest {
     public void findEmployee() throws Exception {
         this.mockMvc.perform(get("/api/employee/{id}", newEmployee.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString(asJsonString(newEmployee))))
+            .andExpect(content().string(containsString(jsonToString(newEmployee))))
             .andReturn();
     }
 
@@ -95,7 +95,7 @@ public class EmployeeControllerTest {
     public void findEmployeeByName() throws Exception {
         this.mockMvc.perform(get("/api/employee/search/name/{name}", newEmployee.getFirstName()))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString(asJsonString(newEmployee))))
+            .andExpect(content().string(containsString(jsonToString(newEmployee))))
             .andReturn();
     }
 
@@ -103,18 +103,10 @@ public class EmployeeControllerTest {
     public void removeEmployee() throws Exception {
         this.mockMvc.perform(delete("/api/employee/{id}", newEmployee.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().string(not(containsString(asJsonString(newEmployee)))))
+            .andExpect(content().string(not(containsString(jsonToString(newEmployee)))))
             .andReturn();
     }
 
-    public static String asJsonString(final Object obj) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
 }

@@ -40,7 +40,7 @@ public class GradeController {
         return grade;
     }
 
-    @RequestMapping(path = "/search/employeeId/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/employeeId/{employeeId}", method = RequestMethod.GET)
     public List<Grade> findGradeByEmployeeId(@PathVariable String employeeId){
         return gradeRepository.findByEmployeeId(employeeId);
     }

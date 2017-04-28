@@ -40,7 +40,7 @@ public class HistoryController {
         return history;
     }
 
-    @RequestMapping(path = "/search/employeeId/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/employeeId/{employeeId}", method = RequestMethod.GET)
     public List<History> findHistoryByEmployeeId(@PathVariable String employeeId){
         return historyRepository.findByEmployeeId(employeeId);
     }

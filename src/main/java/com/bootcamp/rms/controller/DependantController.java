@@ -40,7 +40,7 @@ public class DependantController {
         return dependant;
     }
 
-    @RequestMapping(path = "/search/employeeId/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/search/employeeId/{employeeId}", method = RequestMethod.GET)
     public List<Dependant> findDependantByEmployeeId(@PathVariable String employeeId){
         return dependantRepository.findByEmployeeId(employeeId);
     }
