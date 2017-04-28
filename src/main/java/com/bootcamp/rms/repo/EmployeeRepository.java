@@ -1,6 +1,6 @@
-package com.aziz.rms.repo;
+package com.bootcamp.rms.repo;
 
-import com.aziz.rms.domain.Employee;
+import com.bootcamp.rms.domain.Employee;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;

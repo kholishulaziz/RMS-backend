@@ -1,4 +1,4 @@
-package com.aziz.rms;
+package com.bootcamp.rms;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

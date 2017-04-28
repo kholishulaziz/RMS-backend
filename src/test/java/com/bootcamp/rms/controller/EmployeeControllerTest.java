@@ -1,8 +1,8 @@
-package com.aziz.rms.controller;
+package com.bootcamp.rms.controller;
 
-import com.aziz.rms.common.util;
-import com.aziz.rms.domain.Employee;
-import com.aziz.rms.domain.History;
+import com.bootcamp.rms.common.util;
+import com.bootcamp.rms.domain.Employee;
+import com.bootcamp.rms.domain.History;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

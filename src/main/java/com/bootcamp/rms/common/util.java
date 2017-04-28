@@ -1,4 +1,4 @@
-package com.aziz.rms.common;
+package com.bootcamp.rms.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

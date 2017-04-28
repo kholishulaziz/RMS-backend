@@ -1,6 +1,6 @@
-package com.aziz.rms.repo;
+package com.bootcamp.rms.repo;
 
-import com.aziz.rms.domain.Lookup;
+import com.bootcamp.rms.domain.Lookup;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

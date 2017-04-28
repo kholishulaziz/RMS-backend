@@ -1,4 +1,4 @@
-package com.aziz.rms.config;
+package com.bootcamp.rms.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

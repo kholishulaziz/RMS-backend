@@ -1,7 +1,7 @@
-package com.aziz.rms.controller;
+package com.bootcamp.rms.controller;
 
-import com.aziz.rms.domain.Lookup;
-import com.aziz.rms.repo.LookupRepository;
+import com.bootcamp.rms.domain.Lookup;
+import com.bootcamp.rms.repo.LookupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

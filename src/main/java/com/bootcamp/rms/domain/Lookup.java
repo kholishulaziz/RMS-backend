@@ -1,4 +1,4 @@
-package com.aziz.rms.domain;
+package com.bootcamp.rms.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,7 +8,6 @@ import javax.persistence.*;
  * Created by Kholishul_A on 20/04/2017.
  */
 @Entity
-@Table(name="LOOKUP")
 public class Lookup {
 
     @Id

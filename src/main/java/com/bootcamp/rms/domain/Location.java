@@ -1,4 +1,4 @@
-package com.aziz.rms.domain;
+package com.bootcamp.rms.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -6,14 +6,13 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Kholishul_A on 20/04/2017.
+ * Created by Kholishul_A on 28/04/2017.
  */
 @Entity
-@Table(name="HISTORY")
-public class History {
+public class Location {
 
     @Id
-    @Column(name="HISTORY_ID")
+    @Column(name="LOCATION_ID")
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String Id;
@@ -22,11 +21,9 @@ public class History {
 
     private Date endDate;
 
-    private String projectName;
+    private String city;
 
-    private String ProjectRole;
-
-    private String jobDescription;
+    private String address;
 
     @Column(name="EMPLOYEE_ID")
     private String employeeId;
@@ -55,28 +52,20 @@ public class History {
         this.endDate = endDate;
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getCity() {
+        return city;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getProjectRole() {
-        return ProjectRole;
+    public String getAddress() {
+        return address;
     }
 
-    public void setProjectRole(String projectRole) {
-        ProjectRole = projectRole;
-    }
-
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmployeeId() {

@@ -1,4 +1,4 @@
-package com.aziz.rms.domain;
+package com.bootcamp.rms.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
