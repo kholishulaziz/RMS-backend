@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * Created by Kholishul_A on 20/04/2017.
@@ -35,11 +34,7 @@ public class EmployeeController {
 
     @RequestMapping(path = "/{Id}", method = RequestMethod.GET)
     public Employee findEmployee(@PathVariable String Id){
-        Employee employee = employeeRepository.findOne(Id);
-        if (employee == null){
-            throw new NoSuchElementException("Employee does not exist :" + Id);
-        }
-        return employee;
+        return employeeRepository.findOne(Id);
     }
 
     @RequestMapping(path = "/search/name/{name}", method = RequestMethod.GET)
@@ -48,11 +43,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(path = "/get-login-user", method = RequestMethod.GET)
-    public Employee findEmployeeByUsername(){
-
+    public Employee findLoginUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return employeeRepository.findOne(user.getEmployeeId());
-
     }
 
     @RequestMapping(path= "/{Id}", method = RequestMethod.PUT)

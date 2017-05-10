@@ -12,10 +12,10 @@ public class RmsApplicationTests {
 	@Bean
 	public DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder()
-				.generateUniqueName(true)
-				.setType(H2)
-				.setScriptEncoding("UTF-8")
-				.ignoreFailedDrops(true)
-				.build();
+			.generateUniqueName(true)
+			.setType(H2)
+			.setScriptEncoding("UTF-8")
+			.ignoreFailedDrops(true)
+			.build();
 	}
 }

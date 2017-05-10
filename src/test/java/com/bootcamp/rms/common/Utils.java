@@ -1,15 +1,17 @@
 package com.bootcamp.rms.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.sql.Date;
 
 /**
  * Created by Kholishul_A on 27/04/2017.
  */
-public class util {
+public class Utils {
 
     public static Date parseStrToDate(String strDate) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
@@ -28,4 +30,13 @@ public class util {
             throw new RuntimeException(e);
         }
     }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class OAuthToken {
+        @JsonProperty("access_token")
+        public String accessToken;
+    }
+
 }
+
+

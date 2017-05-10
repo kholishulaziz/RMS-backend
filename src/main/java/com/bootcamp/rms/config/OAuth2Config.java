@@ -33,8 +33,14 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Value("${oauth.tokenTimeout:3600}")
+    @Value("${security.oauth2.token-timeout}")
     private int expiration;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String clientSecret;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -49,7 +55,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("client").secret("secret").accessTokenValiditySeconds(expiration)
+        clients.inMemory().withClient(clientId).secret(clientSecret).accessTokenValiditySeconds(expiration)
                 .scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
     }
 
