@@ -1,9 +1,11 @@
 package com.bootcamp.rms.controller;
 
 import com.bootcamp.rms.domain.Employee;
+import com.bootcamp.rms.domain.User;
 import com.bootcamp.rms.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +45,14 @@ public class EmployeeController {
     @RequestMapping(path = "/search/name/{name}", method = RequestMethod.GET)
     public List<Employee> findEmployeeByName(@PathVariable String name){
         return employeeRepository.findByFirstNameContainsOrLastNameContains(name, name);
+    }
+
+    @RequestMapping(path = "/get-login-user", method = RequestMethod.GET)
+    public Employee findEmployeeByUsername(){
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return employeeRepository.findOne(user.getEmployeeId());
+
     }
 
     @RequestMapping(path= "/{Id}", method = RequestMethod.PUT)

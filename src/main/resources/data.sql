@@ -1,8 +1,7 @@
 -- dummy data for rms.User table
-INSERT INTO USER (USER_ID, USERNAME, PASSWORD, ENABLED) VALUES
-	('user_01', 'aziz@mitrais.com', '$2a$10$D4OLKI6yy68crm.3imC9X.P2xqKHs5TloWUcr6z5XdOqnTrAK84ri', true),
-	('user_02', 'yoga@mitrais.com', '$2a$10$D4OLKI6yy68crm.3imC9X.P2xqKHs5TloWUcr6z5XdOqnTrAK84ri', true);
-
+INSERT INTO USER (USER_ID, EMPLOYEE_ID, USERNAME, PASSWORD, ENABLED) VALUES
+	('user_01', 'dummy-empl-01', 'aziz@mitrais.com', '$2a$10$D4OLKI6yy68crm.3imC9X.P2xqKHs5TloWUcr6z5XdOqnTrAK84ri', true),
+	('user_02', 'dummy-empl-03', 'yoga@mitrais.com', '$2a$10$D4OLKI6yy68crm.3imC9X.P2xqKHs5TloWUcr6z5XdOqnTrAK84ri', true);
 
 
 -- dummy data for rms.Employee table
@@ -18,6 +17,10 @@ VALUES
     ('dummy-empl-02', 'Abizar Athaillah', 'Aziz', 'M', DATE '2017-01-21', 'IND',
     'S', '081234567890', 'React Bootcamp', 'N', DATE '2017-01-21',
     'JP', 'JWT', 'abizarathaillah.aziz@mitrais.com', 'DPS',
+    FALSE),
+    ('dummy-empl-03', 'Yoga', 'Kurniawan', 'M', DATE '2017-01-21', 'IND',
+    'S', '081234567890', 'React Bootcamp', 'N', DATE '2017-01-21',
+    'JP', 'JWT', 'yoga.kurniawan@mitrais.com', 'DPS',
     FALSE);
 
 
