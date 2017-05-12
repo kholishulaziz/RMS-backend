@@ -2,10 +2,13 @@
 
 Backend Services for RMS Application
 
-Datasource: MySQL
-Build tool: Apache Maven
-Authorization : Oauth2
-Code Coverage: Jacoco
+
+* Spring Boot
+* MySQL
+* Apache Maven
+* Oauth2
+* Jacoco
+
 
 **Start the application**
 ```
@@ -21,8 +24,8 @@ curl -X POST http://localhost:8000/oauth/token -H "Authorization:Basic Y2xpZW50O
 curl -X GET http://localhost:8000/api/employee/get-login-user -H "Authorization: Bearer $TOKEN"
 ```
 
-**Code Coverage**
+**Jacoco Code Coverage**
 ```
 mvn clean package
 ```
-code coverage report for unit tests to the directory target/site/jacoco
+Code coverage report for unit tests to the directory target/site/jacoco
